@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import FormikUsingJoi from "./utils/formikusingjoi";
 import Joi from "joi";
 import { useNavigate } from "react-router-dom";
-import { CreateUser } from "./service/userService";
+import { loginUser } from "./service/userService";
 import { useState } from "react";
 
 const SignIn = () => {
@@ -15,10 +15,8 @@ const SignIn = () => {
     initialValues: {
       email: "",
       password: "",
-      name: "",
     },
     validate: FormikUsingJoi({
-      name: Joi.string().min(2).max(255).required(),
       email: Joi.string()
         .min(6)
         .max(255)
@@ -28,8 +26,8 @@ const SignIn = () => {
     }),
     async onSubmit(values) {
       try {
-        await CreateUser(values);
-        navigate("/sign-in");
+        await loginUser(values);
+        navigate("/");
       } catch ({ response }) {
         if (response && response.status === 400) {
           setError(response.data);
@@ -42,7 +40,7 @@ const SignIn = () => {
       <PageHeader
         title={
           <>
-            Sign Up Real <i className="bi bi-geo-fill"></i>App
+            Sign In Real <i className="bi bi-geo-fill"></i>App
           </>
         }
         description={<>You wont regret it</>}

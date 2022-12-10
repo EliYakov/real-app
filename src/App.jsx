@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import About from "./components/about";
 import SignUp from "./components/signup";
 import SignIn from "./components/signin";
+import SignOut from "./components/signout";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="sign-up" element={<SignUp />} />
           <Route path="sign-in" element={<SignIn />} />
+          <Route path="sign-out" element={<SignOut />} />
         </Routes>
       </main>
 

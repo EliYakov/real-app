@@ -1,8 +1,9 @@
 import { NavLink, Link } from "react-router-dom";
-import { getUser } from "./service/userService";
+
+import { useAuth } from "./context/auth.context";
 
 const Navbar = () => {
-  const user = getUser();
+  const { user } = useAuth();
   return (
     <nav className="navbar navbar-expand-sm navbar-light bg-light shadow-sm">
       <div className="container-fluid">

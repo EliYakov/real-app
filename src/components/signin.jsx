@@ -4,12 +4,15 @@ import { useFormik } from "formik";
 import FormikUsingJoi from "./utils/formikusingjoi";
 import Joi from "joi";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "./service/userService";
+
 import { useState } from "react";
+import { useAuth } from "./context/auth.context";
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const { error, setError } = useState();
+
+  const { login: loginUser } = useAuth();
+  const [error, setError] = useState();
   const form = useFormik({
     validateOnMount: true,
     initialValues: {

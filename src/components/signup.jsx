@@ -10,7 +10,7 @@ import { useState } from "react";
 const SignUp = () => {
   const navigate = useNavigate();
 
-  const { CreateUser } = useAuth();
+  const { createUser } = useAuth();
   const { error, setError } = useState("");
   const form = useFormik({
     validateOnMount: true,
@@ -30,7 +30,7 @@ const SignUp = () => {
     }),
     async onSubmit(values) {
       try {
-        await CreateUser({ ...values, biz: false });
+        await createUser({ ...values, biz: false });
         navigate("/sign-in");
       } catch ({ response }) {
         if (response && response.status === 400) {

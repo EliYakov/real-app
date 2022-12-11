@@ -7,11 +7,12 @@ import { useAuth } from "./context/auth.context";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { Navigate } from "react-router-dom";
 
 const SignUp = () => {
   const navigate = useNavigate();
 
-  const { createUser } = useAuth();
+  const { createUser, user } = useAuth();
   const { error, setError } = useState("");
   const form = useFormik({
     validateOnMount: true,
@@ -41,6 +42,10 @@ const SignUp = () => {
       }
     },
   });
+
+  if (user) {
+    return <Navigate to="/" />;
+  }
   return (
     <>
       <PageHeader

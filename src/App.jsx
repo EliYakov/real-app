@@ -13,6 +13,7 @@ import SignOut from "./components/signout";
 import MyCards from "./components/mycards";
 import SignUpBiz from "./components/signupbiz";
 import ProtectedRoute from "./components/common/protectedRoute";
+import CreateCard from "./components/createCard";
 
 function App() {
   return (
@@ -35,6 +36,14 @@ function App() {
             element={
               <ProtectedRoute onlyBiz>
                 <MyCards />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="create-cards"
+            element={
+              <ProtectedRoute onlyBiz>
+                <CreateCard />
               </ProtectedRoute>
             }
           />

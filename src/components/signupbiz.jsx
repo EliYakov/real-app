@@ -35,7 +35,7 @@ const SignUpBiz = () => {
         await createUser({ ...values, biz: true });
         await login({ email: values.email, password: values.password });
         toast("Your account is ready for action");
-        navigate("/my-cards");
+        navigate("/create-cards");
       } catch ({ response }) {
         if (response && response.status === 400) {
           setError(response.data);

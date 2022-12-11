@@ -8,10 +8,10 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-const SignUp = () => {
+const SignUpBiz = () => {
   const navigate = useNavigate();
 
-  const { createUser } = useAuth();
+  const { createUser, login } = useAuth();
   const { error, setError } = useState("");
   const form = useFormik({
     validateOnMount: true,
@@ -31,9 +31,10 @@ const SignUp = () => {
     }),
     async onSubmit(values) {
       try {
-        await createUser({ ...values, biz: false });
+        await createUser({ ...values, biz: true });
+        await login({ email: values.email, password: values.password });
         toast("Your account is ready for action");
-        navigate("/sign-in");
+        navigate("/my-cards");
       } catch ({ response }) {
         if (response && response.status === 400) {
           setError(response.data);
@@ -46,10 +47,10 @@ const SignUp = () => {
       <PageHeader
         title={
           <>
-            Sign Up Real <i className="bi bi-geo-fill"></i>App
+            Sign Up for business Real <i className="bi bi-geo-fill"></i>App
           </>
         }
-        description={<>You wont regret it</>}
+        description={<>You wont regret it, it'll upgrade your account</>}
       />
       <form onSubmit={form.handleSubmit} noValidate autoComplete="off">
         {error && <div className="alert alert-danger">{error}</div>}
@@ -92,4 +93,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUpBiz;

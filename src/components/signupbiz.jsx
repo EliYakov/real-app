@@ -13,7 +13,7 @@ const SignUpBiz = () => {
   const navigate = useNavigate();
 
   const { createUser, login, user } = useAuth();
-  const { error, setError } = useState("");
+  const [ error, setError ] = useState("");
   const form = useFormik({
     validateOnMount: true,
     initialValues: {

@@ -13,7 +13,7 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const { createUser, user } = useAuth();
-  const { error, setError } = useState("");
+  const [error, setError ] = useState("");
   const form = useFormik({
     validateOnMount: true,
     initialValues: {

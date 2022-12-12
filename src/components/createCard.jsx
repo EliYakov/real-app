@@ -114,7 +114,7 @@ const CreateCard = () => {
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Sign-In
+          Create Card
         </button>
       </form>
     </>
